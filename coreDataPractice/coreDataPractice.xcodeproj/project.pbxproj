@@ -11,9 +11,11 @@
 		4FE3566F26D8BA1A003D163C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3566E26D8BA1A003D163C /* SceneDelegate.swift */; };
 		4FE3567126D8BA1A003D163C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3567026D8BA1A003D163C /* ViewController.swift */; };
 		4FE3567426D8BA1A003D163C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE3567226D8BA1A003D163C /* Main.storyboard */; };
-		4FE3567726D8BA1A003D163C /* coreDataPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3567526D8BA1A003D163C /* coreDataPractice.xcdatamodeld */; };
+		4FE3567726D8BA1A003D163C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3567526D8BA1A003D163C /* Model.xcdatamodeld */; };
 		4FE3567926D8BA1C003D163C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE3567826D8BA1C003D163C /* Assets.xcassets */; };
 		4FE3567C26D8BA1C003D163C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE3567A26D8BA1C003D163C /* LaunchScreen.storyboard */; };
+		4FE3568526D8BE81003D163C /* PhoneBook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3568326D8BE81003D163C /* PhoneBook+CoreDataClass.swift */; };
+		4FE3568626D8BE81003D163C /* PhoneBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE3568426D8BE81003D163C /* PhoneBook+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		4FE3567826D8BA1C003D163C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FE3567B26D8BA1C003D163C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FE3567D26D8BA1C003D163C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FE3568326D8BE81003D163C /* PhoneBook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneBook+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4FE3568426D8BE81003D163C /* PhoneBook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 		4FE3566026D8BA1A003D163C = {
 			isa = PBXGroup;
 			children = (
+				4FE3568326D8BE81003D163C /* PhoneBook+CoreDataClass.swift */,
+				4FE3568426D8BE81003D163C /* PhoneBook+CoreDataProperties.swift */,
 				4FE3566B26D8BA1A003D163C /* coreDataPractice */,
 				4FE3566A26D8BA1A003D163C /* Products */,
 			);
@@ -65,7 +71,7 @@
 				4FE3567826D8BA1C003D163C /* Assets.xcassets */,
 				4FE3567A26D8BA1C003D163C /* LaunchScreen.storyboard */,
 				4FE3567D26D8BA1C003D163C /* Info.plist */,
-				4FE3567526D8BA1A003D163C /* coreDataPractice.xcdatamodeld */,
+				4FE3567526D8BA1A003D163C /* Model.xcdatamodeld */,
 			);
 			path = coreDataPractice;
 			sourceTree = "<group>";
@@ -142,8 +148,10 @@
 			files = (
 				4FE3567126D8BA1A003D163C /* ViewController.swift in Sources */,
 				4FE3566D26D8BA1A003D163C /* AppDelegate.swift in Sources */,
+				4FE3568526D8BE81003D163C /* PhoneBook+CoreDataClass.swift in Sources */,
 				4FE3566F26D8BA1A003D163C /* SceneDelegate.swift in Sources */,
-				4FE3567726D8BA1A003D163C /* coreDataPractice.xcdatamodeld in Sources */,
+				4FE3567726D8BA1A003D163C /* Model.xcdatamodeld in Sources */,
+				4FE3568626D8BE81003D163C /* PhoneBook+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.coreDataPractice.coreDataPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.coreDataPractice.coreDataPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -345,13 +353,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4FE3567526D8BA1A003D163C /* coreDataPractice.xcdatamodeld */ = {
+		4FE3567526D8BA1A003D163C /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				4FE3567626D8BA1A003D163C /* coreDataPractice.xcdatamodel */,
 			);
 			currentVersion = 4FE3567626D8BA1A003D163C /* coreDataPractice.xcdatamodel */;
-			path = coreDataPractice.xcdatamodeld;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
