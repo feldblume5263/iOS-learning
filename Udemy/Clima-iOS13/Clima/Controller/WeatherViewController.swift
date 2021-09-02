@@ -16,6 +16,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var searchTextField: UITextField!
     
+    var weatherManager = WeatherManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +53,10 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         // 검색에 값을 이용해야 한다. 바로 뒤에서 해제되기 때문
+        if let city = searchTextField.text {
+            
+            weatherManager.fetchWeather(cityName: city)
+        }
         
         searchTextField.text = "" // textField가 다시 비워진다.
     }
