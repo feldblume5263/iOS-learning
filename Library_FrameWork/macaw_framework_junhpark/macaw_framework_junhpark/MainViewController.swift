@@ -15,15 +15,13 @@ class MainViewController: UIViewController {
         
         let newView = UIView()
         
-        newView.backgroundColor = UIColor(red: 239.0/255, green: 231.0/255, blue: 219.0/255, alpha: 1.0)
+        newView.backgroundColor = subColor
         newView.layer.cornerRadius = 10
         
         newView.layer.shadowColor = UIColor.gray.cgColor
         newView.layer.shadowOpacity = 1.0
         newView.layer.shadowOffset = CGSize.zero
         newView.layer.shadowRadius = 6
-        
-        newView.translatesAutoresizingMaskIntoConstraints = false
         
         return newView
     }()
@@ -36,8 +34,6 @@ class MainViewController: UIViewController {
         newLabel.textAlignment = .center
         newLabel.font = UIFont.systemFont(ofSize: 15)
         
-        newLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         return newLabel
     }()
     
@@ -46,7 +42,7 @@ class MainViewController: UIViewController {
         
         let newButton = UIButton()
         
-        newButton.backgroundColor = UIColor(red: 239.0/255, green: 231.0/255, blue: 219.0/255, alpha: 1.0)
+        newButton.backgroundColor = subColor
         newButton.setTitle("Start", for: .normal)
         newButton.setTitleColor(.brown, for: .normal)
         
@@ -58,24 +54,23 @@ class MainViewController: UIViewController {
         
         newButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
         
-        newButton.translatesAutoresizingMaskIntoConstraints = false
-        
         return newButton
     }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 176.0/255, green: 146.0/255, blue: 131.0/255, alpha: 1.0)
+        view.backgroundColor = mainColor
         
         createMainViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     func createMainViews() {
@@ -87,6 +82,7 @@ class MainViewController: UIViewController {
         createGreetingViewConstraint()
         createGreetgingLabelConstraint()
         createStartButtonConstraint()
+        
     }
     
     func removeMainViews() {
@@ -117,7 +113,7 @@ class MainViewController: UIViewController {
     }
     
     func createGreetingViewConstraint() {
-                
+        
         let viewWidth = view.frame.width
         let viewHeight = view.frame.height
         
@@ -129,17 +125,11 @@ class MainViewController: UIViewController {
     
     
     @objc func startButtonPressed(sender: UIButton!) {
-        print("Button tapped")
         
         let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "firstAniVC")
         
-        viewControllerName?.modalTransitionStyle = .crossDissolve
-        
         if let firstAniView = viewControllerName {
-            removeMainViews()
-            firstAniView.modalPresentationStyle = .fullScreen
-            self.present(firstAniView, animated: true, completion: createMainViews)
-            
+            self.navigationController?.pushViewController(firstAniView, animated: true)
         }
         
     }
