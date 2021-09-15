@@ -11,17 +11,30 @@
         <!--First View Controller-->
         <scene sceneID="ii4-ui-tem">
             <objects>
-                <viewController id="XG9-7r-Wr8" customClass="FirstViewController" customModule="macaw_practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XG9-7r-Wr8" customClass="FirstViewController" customModule="macaw_practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nyx-Wd-ZtF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpF-bL-IGT" customClass="PickedCircleView" customModule="macaw_practice" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="csi-Q2-oKi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RpF-bL-IGT" firstAttribute="centerX" secondItem="Nyx-Wd-ZtF" secondAttribute="centerX" id="5yD-kn-dKx"/>
+                            <constraint firstItem="RpF-bL-IGT" firstAttribute="top" secondItem="Nyx-Wd-ZtF" secondAttribute="top" id="B5G-Ud-lNn"/>
+                            <constraint firstAttribute="bottom" secondItem="RpF-bL-IGT" secondAttribute="bottom" constant="34" id="FOR-uu-O7f"/>
+                            <constraint firstAttribute="trailing" secondItem="RpF-bL-IGT" secondAttribute="trailing" id="Ye6-Q3-Vn1"/>
+                            <constraint firstItem="RpF-bL-IGT" firstAttribute="leading" secondItem="Nyx-Wd-ZtF" secondAttribute="leading" id="d2K-zu-Tf4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Twv-fu-JVu">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="PXx-gW-ykF">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Ucu-39-Es0">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <rect key="frame" x="20" y="7" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
@@ -41,7 +54,7 @@
         <!--Second View Controller-->
         <scene sceneID="NHm-jd-U9W">
             <objects>
-                <viewController id="f2a-2e-kgu" customClass="SecondViewController" customModule="macaw_practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f2a-2e-kgu" customClass="SecondViewController" customModule="macaw_practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HBp-Il-KpG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

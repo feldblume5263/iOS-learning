@@ -18,7 +18,6 @@ class FirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
@@ -33,7 +32,23 @@ class FirstViewController: UIViewController {
     
    
     @IBAction func nextButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToSecondView", sender: self)
+//        performSegue(withIdentifier: "goToSecondView", sender: self)
+        let rootView = presentingViewController
+        
+        print(rootView?.restorationIdentifier)
+
+        self.dismiss(animated: true) {
+            let secondVC = self.storyboard?.instantiateViewController(identifier: "secondVC") as! SecondViewController
+            
+            secondVC.modalPresentationStyle = .fullScreen
+            rootView?.present(secondVC, animated: true, completion: nil)
+            
+        }
+        
 
     }
+    
+    
+
+    
 }
