@@ -14,7 +14,7 @@ class PopBallCustomView: MacawView {
     var ballNodes = [Group]()
     var onComplete: (() -> ()) = {}
     
-    let n = 1
+    let n = 10
     let speed = 20.0
     let r = 10.0
     let time = 30.0
@@ -88,7 +88,7 @@ class PopBallCustomView: MacawView {
             let circle = Circle(cx: r, cy: r, r: r)
             let shape = Shape(
                 form: circle,
-                fill: ballColors[Int(arc4random() % 7)]
+                fill: ballColors[Int(figure) % 7]
             )
             
             let ballGroup = Group(contents: [shape])
@@ -115,9 +115,7 @@ class PopBallCustomView: MacawView {
             ].combine())
         }
         
-        animation = animations.combine().autoreversed().onComplete {
-            self.completeAnimation(figure: figure)
-        }
+        animation = animations.combine().autoreversed()
         
         let node = Group(contents: ballNodes)
         node.place = Transform().move(dx: startPos.dx, dy: startPos.dy)
@@ -130,7 +128,6 @@ class PopBallCustomView: MacawView {
         
         self.animation?.stop()
         completeAnimation(figure: figure)
-
     }
     
     

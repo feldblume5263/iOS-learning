@@ -10,6 +10,7 @@ import UIKit
 class SecondAniViewController: UIViewController {
 
     private var userFigure: Float = 50.0
+    private var popViewHeight: CGFloat!
     
     let popBallView = PopBallCustomView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
 
@@ -31,6 +32,7 @@ class SecondAniViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = mainColor
+        popViewHeight = view.frame.height * 0.4
         
         view.addSubview(popBallView)
         createPopBallViewConstraint()
@@ -52,22 +54,39 @@ class SecondAniViewController: UIViewController {
         popBallView.startAnimation()
         
         minusButton.addTarget(self, action: #selector(minusButtonPressed), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
+
+    }
+    
+    @objc func plusButtonPressed() {
+        
+        if (userFigure < 100) {
+            
+            popViewHeight = popViewHeight - (view.frame.height * 0.05)
+            userFigure = userFigure + 10
+            popBallView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            popBallView.resetAnimation(figure: userFigure)
+            popBallView.startAnimation()
+            
+        }
     }
     
     @objc func minusButtonPressed() {
         
-        if (userFigure >= 10) {
+        if (userFigure > 0) {
+            
+            popViewHeight = popViewHeight + (view.frame.height * 0.05)
+            popBallView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
             userFigure = userFigure - 10
+            popBallView.resetAnimation(figure: userFigure)
+            popBallView.startAnimation()
         }
-
-        popBallView.resetAnimation(figure: userFigure)
-        popBallView.startAnimation()
     }
     
     func createPopBallViewConstraint() {
         
         popBallView.frame.size = CGSize(width: 380, height: 100)
-        popBallView.center = CGPoint(x: view.frame.width * 0.5, y: view.frame.height * 0.3)
+        popBallView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
         popBallView.backgroundColor = .clear
         popBallView.layer.cornerRadius = 10
         
