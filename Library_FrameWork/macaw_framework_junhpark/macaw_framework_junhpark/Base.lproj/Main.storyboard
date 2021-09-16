@@ -27,7 +27,7 @@
         <!--First Ani View Controller-->
         <scene sceneID="xf6-16-nfa">
             <objects>
-                <viewController storyboardIdentifier="firstAniVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZVM-1O-eEE" customClass="firstAniViewController" customModule="macaw_framework_junhpark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstAniVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZVM-1O-eEE" customClass="FirstAniViewController" customModule="macaw_framework_junhpark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3zt-Xr-oYr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nao-wP-Doe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
+        </scene>
+        <!--Second Ani View Controller-->
+        <scene sceneID="yDK-Eb-SiN">
+            <objects>
+                <viewController storyboardIdentifier="secondAniVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JxL-Mn-YA9" customClass="SecondAniViewController" customModule="macaw_framework_junhpark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JGn-eG-LfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TkT-HR-eO8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b1p-8b-qDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3661" y="115"/>
         </scene>
     </scenes>
     <resources>

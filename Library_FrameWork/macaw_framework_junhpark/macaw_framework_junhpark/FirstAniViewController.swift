@@ -10,24 +10,25 @@ import Macaw
 
 
 
-class firstAniViewController: UIViewController {
+class FirstAniViewController: UIViewController {
 
-//    let mainColor = UIColor(red: 176.0/255, green: 146.0/255, blue: 131.0/255, alpha: 1.0)
-//    let subColor = UIColor(red: 239.0/255, green: 231.0/255, blue: 219.0/255, alpha: 1.0)
-    
     let popBallView = PopBallView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
 
     private var startPopButton: UIButton = {
        
         let newButton = UIButton()
-        
         return newButton
     }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = mainColor
+    
+        let nextButton = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(nextButtonPressed))
+        self.navigationItem.rightBarButtonItem = nextButton
         
         view.addSubview(popBallView)
         createPopBallViewConstraint()
@@ -80,5 +81,14 @@ class firstAniViewController: UIViewController {
         startPopButton.layer.shadowOpacity = 1.0
         startPopButton.layer.shadowOffset = CGSize.zero
         startPopButton.layer.shadowRadius = 6
+    }
+    
+    @objc func nextButtonPressed() {
+        
+        let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "secondAniVC")
+        
+        if let secondAniView = viewControllerName {
+            self.navigationController?.pushViewController(secondAniView, animated: true)
+        }
     }
 }

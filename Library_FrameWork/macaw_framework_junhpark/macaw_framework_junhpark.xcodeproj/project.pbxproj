@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0F7FB526F30B7300FC1E6A /* SecondAniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */; };
+		4F0F7FB726F318EF00FC1E6A /* PopBallCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FB626F318EF00FC1E6A /* PopBallCustomView.swift */; };
 		4F61C2CC26F1985000F7AF63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */; };
 		4F61C2CE26F1985000F7AF63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */; };
 		4F61C2D026F1985000F7AF63 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CF26F1985000F7AF63 /* MainViewController.swift */; };
 		4F61C2D326F1985000F7AF63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F61C2D126F1985000F7AF63 /* Main.storyboard */; };
 		4F61C2D526F1985300F7AF63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F61C2D426F1985300F7AF63 /* Assets.xcassets */; };
 		4F61C2D826F1985300F7AF63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F61C2D626F1985300F7AF63 /* LaunchScreen.storyboard */; };
-		4F61C2E026F1B4CA00F7AF63 /* firstAniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2DF26F1B4C900F7AF63 /* firstAniViewController.swift */; };
+		4F61C2E026F1B4CA00F7AF63 /* FirstAniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2DF26F1B4C900F7AF63 /* FirstAniViewController.swift */; };
 		4F61C2E226F1DA2800F7AF63 /* PopBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2E126F1DA2800F7AF63 /* PopBallView.swift */; };
 		4F61C2E426F20AEB00F7AF63 /* ColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2E326F20AEA00F7AF63 /* ColorValue.swift */; };
 		B02D2B890560CF3B80B492F4 /* Pods_macaw_framework_junhpark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FEE04A183D40FBB73BC847 /* Pods_macaw_framework_junhpark.framework */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		1E4762BF3A2FF034973EB83C /* Pods-macaw_framework_junhpark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macaw_framework_junhpark.debug.xcconfig"; path = "Target Support Files/Pods-macaw_framework_junhpark/Pods-macaw_framework_junhpark.debug.xcconfig"; sourceTree = "<group>"; };
 		36FEE04A183D40FBB73BC847 /* Pods_macaw_framework_junhpark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macaw_framework_junhpark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAniViewController.swift; sourceTree = "<group>"; };
+		4F0F7FB626F318EF00FC1E6A /* PopBallCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopBallCustomView.swift; sourceTree = "<group>"; };
 		4F61C2C826F1985000F7AF63 /* macaw_framework_junhpark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macaw_framework_junhpark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,7 +34,7 @@
 		4F61C2D426F1985300F7AF63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F61C2D726F1985300F7AF63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F61C2D926F1985300F7AF63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F61C2DF26F1B4C900F7AF63 /* firstAniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstAniViewController.swift; sourceTree = "<group>"; };
+		4F61C2DF26F1B4C900F7AF63 /* FirstAniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAniViewController.swift; sourceTree = "<group>"; };
 		4F61C2E126F1DA2800F7AF63 /* PopBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopBallView.swift; sourceTree = "<group>"; };
 		4F61C2E326F20AEA00F7AF63 /* ColorValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValue.swift; sourceTree = "<group>"; };
 		5751D5070CA4A59FD84686EB /* Pods-macaw_framework_junhpark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macaw_framework_junhpark.release.xcconfig"; path = "Target Support Files/Pods-macaw_framework_junhpark/Pods-macaw_framework_junhpark.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,13 +76,15 @@
 				4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */,
 				4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */,
 				4F61C2CF26F1985000F7AF63 /* MainViewController.swift */,
-				4F61C2DF26F1B4C900F7AF63 /* firstAniViewController.swift */,
+				4F61C2DF26F1B4C900F7AF63 /* FirstAniViewController.swift */,
 				4F61C2D126F1985000F7AF63 /* Main.storyboard */,
 				4F61C2D426F1985300F7AF63 /* Assets.xcassets */,
 				4F61C2D626F1985300F7AF63 /* LaunchScreen.storyboard */,
 				4F61C2D926F1985300F7AF63 /* Info.plist */,
 				4F61C2E126F1DA2800F7AF63 /* PopBallView.swift */,
 				4F61C2E326F20AEA00F7AF63 /* ColorValue.swift */,
+				4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */,
+				4F0F7FB626F318EF00FC1E6A /* PopBallCustomView.swift */,
 			);
 			path = macaw_framework_junhpark;
 			sourceTree = "<group>";
@@ -214,10 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0F7FB526F30B7300FC1E6A /* SecondAniViewController.swift in Sources */,
 				4F61C2E226F1DA2800F7AF63 /* PopBallView.swift in Sources */,
+				4F0F7FB726F318EF00FC1E6A /* PopBallCustomView.swift in Sources */,
 				4F61C2D026F1985000F7AF63 /* MainViewController.swift in Sources */,
 				4F61C2CC26F1985000F7AF63 /* AppDelegate.swift in Sources */,
-				4F61C2E026F1B4CA00F7AF63 /* firstAniViewController.swift in Sources */,
+				4F61C2E026F1B4CA00F7AF63 /* FirstAniViewController.swift in Sources */,
 				4F61C2CE26F1985000F7AF63 /* SceneDelegate.swift in Sources */,
 				4F61C2E426F20AEB00F7AF63 /* ColorValue.swift in Sources */,
 			);
