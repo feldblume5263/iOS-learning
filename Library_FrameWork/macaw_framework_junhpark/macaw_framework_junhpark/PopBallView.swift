@@ -52,7 +52,7 @@ class PopBallView: MacawView {
         
         let screenBounds = UIScreen.main.bounds
         let startPos = Transform.move(
-            dx: Double(screenBounds.width / 2) - r,
+            dx: Double(screenBounds.width / 2) - 2 * r,
             dy: Double(screenBounds.height / 2) - r
         )
         

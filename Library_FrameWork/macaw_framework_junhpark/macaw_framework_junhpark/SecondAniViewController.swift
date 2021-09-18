@@ -12,7 +12,11 @@ class SecondAniViewController: UIViewController {
     private var userFigure: Float = 50.0
     private var popViewHeight: CGFloat!
     
-    let popBallView = PopBallCustomView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    let popBallTopView = PopBallCustomView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    let popBallMiddleView = PopBallCustomView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    let popBallBottomView = PopBallCustomView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
+
 
     private var minusButton: UIButton = {
        
@@ -34,8 +38,20 @@ class SecondAniViewController: UIViewController {
         view.backgroundColor = mainColor
         popViewHeight = view.frame.height * 0.4
         
-        view.addSubview(popBallView)
+        let nextButton = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(nextButtonPressed))
+        self.navigationItem.rightBarButtonItem = nextButton
+        
+        popBallTopView.setShape(shape: 0)
+        popBallMiddleView.setShape(shape: 1)
+        popBallBottomView.setShape(shape: 2)
+        
+        view.addSubview(popBallTopView)
+        view.addSubview(popBallMiddleView)
+        view.addSubview(popBallBottomView)
+        popBallTopView.alpha = 0.0
+        popBallBottomView.alpha = 0.0
         createPopBallViewConstraint()
+        
         view.addSubview(minusButton)
         createMinusButtonConstraint()
         view.addSubview(plusButton)
@@ -45,29 +61,54 @@ class SecondAniViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        popBallView.onComplete = {
+        popBallMiddleView.onComplete = {
             // 끝나고 할일을 정의!!
             self.minusButton.isEnabled = true
         }
         
-        popBallView.prepareAnimation(figure: 30)
-        popBallView.startAnimation()
+        let viewName = [popBallTopView, popBallMiddleView, popBallBottomView]
+        
+        for idx in 0 ... 2 {
+            
+            viewName[idx].prepareAnimation(figure: 50)
+            viewName[idx].startAnimation()
+        }
         
         minusButton.addTarget(self, action: #selector(minusButtonPressed), for: .touchUpInside)
         plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        popBallMiddleView.animation?.stop()
+        popBallTopView.animation?.stop()
+        popBallBottomView.animation?.stop()
+    }
+    
     @objc func plusButtonPressed() {
         
         if (userFigure < 100) {
             
-            popViewHeight = popViewHeight - (view.frame.height * 0.05)
-            userFigure = userFigure + 10
-            popBallView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
-            popBallView.resetAnimation(figure: userFigure)
-            popBallView.startAnimation()
+            popViewHeight = popViewHeight - (view.frame.height * 0.025)
+            popBallTopView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            popBallMiddleView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            popBallBottomView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            userFigure = userFigure + 5
             
+            if userFigure == 80 {
+                
+                popBallBottomView.alpha = 0.0
+                popBallMiddleView.fadeOut()
+                popBallTopView.fadeIn()
+            }
+            
+            if userFigure == 30 {
+                
+                popBallTopView.alpha = 0.0
+                popBallBottomView.fadeOut()
+                popBallMiddleView.fadeIn()
+            }
         }
     }
     
@@ -75,25 +116,44 @@ class SecondAniViewController: UIViewController {
         
         if (userFigure > 0) {
             
-            popViewHeight = popViewHeight + (view.frame.height * 0.05)
-            popBallView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
-            userFigure = userFigure - 10
-            popBallView.resetAnimation(figure: userFigure)
-            popBallView.startAnimation()
+            popViewHeight = popViewHeight + (view.frame.height * 0.025)
+            popBallTopView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            popBallMiddleView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            popBallBottomView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            userFigure = userFigure - 5
+        }
+        
+        if userFigure == 80 {
+            
+            popBallBottomView.alpha = 0.0
+            popBallMiddleView.fadeIn()
+            popBallTopView.fadeOut()
+        }
+        
+        if userFigure == 30 {
+            
+            popBallTopView.alpha = 0.0
+            popBallBottomView.fadeIn()
+            popBallMiddleView.fadeOut()
         }
     }
     
     func createPopBallViewConstraint() {
         
-        popBallView.frame.size = CGSize(width: 380, height: 100)
-        popBallView.center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
-        popBallView.backgroundColor = .clear
-        popBallView.layer.cornerRadius = 10
+        let viewName = [popBallTopView, popBallMiddleView, popBallBottomView]
         
-        popBallView.layer.shadowColor = UIColor.gray.cgColor
-        popBallView.layer.shadowOpacity = 1.0
-        popBallView.layer.shadowOffset = CGSize.zero
-        popBallView.layer.shadowRadius = 6
+        for idx in 0 ... 2 {
+            
+            viewName[idx].frame.size = CGSize(width: 380, height: 300)
+            viewName[idx].center = CGPoint(x: view.frame.width * 0.5, y: popViewHeight)
+            viewName[idx].backgroundColor = .clear
+            viewName[idx].layer.cornerRadius = 10
+        
+            viewName[idx].layer.shadowColor = UIColor.gray.cgColor
+            viewName[idx].layer.shadowOpacity = 1.0
+            viewName[idx].layer.shadowOffset = CGSize.zero
+            viewName[idx].layer.shadowRadius = 6
+        }
     }
     
     func createMinusButtonConstraint() {
@@ -127,5 +187,30 @@ class SecondAniViewController: UIViewController {
         plusButton.layer.shadowOffset = CGSize.zero
         plusButton.layer.shadowRadius = 6
     }
+    
+    @objc func nextButtonPressed() {
+        
+        let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "thirdAniVC")
+        
+        if let thirdAniView = viewControllerName {
+            self.navigationController?.pushViewController(thirdAniView, animated: true)
+        }
+    }
+
+}
+
+public extension UIView {
+    
+ func fadeIn(duration: TimeInterval = 1.0) {
+     UIView.animate(withDuration: duration, animations: {
+        self.alpha = 1.0
+     })
+ }
+
+func fadeOut(duration: TimeInterval = 1.0) {
+    UIView.animate(withDuration: duration, animations: {
+        self.alpha = 0.0
+    })
+  }
 
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4F0F7FB526F30B7300FC1E6A /* SecondAniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */; };
 		4F0F7FB726F318EF00FC1E6A /* PopBallCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FB626F318EF00FC1E6A /* PopBallCustomView.swift */; };
+		4F0F7FB926F5AB7D00FC1E6A /* ThirdAniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FB826F5AB7D00FC1E6A /* ThirdAniViewController.swift */; };
+		4F0F7FBB26F5AE7600FC1E6A /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FBA26F5AE7600FC1E6A /* FloatingView.swift */; };
 		4F61C2CC26F1985000F7AF63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */; };
 		4F61C2CE26F1985000F7AF63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */; };
 		4F61C2D026F1985000F7AF63 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CF26F1985000F7AF63 /* MainViewController.swift */; };
@@ -26,6 +28,8 @@
 		36FEE04A183D40FBB73BC847 /* Pods_macaw_framework_junhpark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macaw_framework_junhpark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAniViewController.swift; sourceTree = "<group>"; };
 		4F0F7FB626F318EF00FC1E6A /* PopBallCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopBallCustomView.swift; sourceTree = "<group>"; };
+		4F0F7FB826F5AB7D00FC1E6A /* ThirdAniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdAniViewController.swift; sourceTree = "<group>"; };
+		4F0F7FBA26F5AE7600FC1E6A /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		4F61C2C826F1985000F7AF63 /* macaw_framework_junhpark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macaw_framework_junhpark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,14 +81,16 @@
 				4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */,
 				4F61C2CF26F1985000F7AF63 /* MainViewController.swift */,
 				4F61C2DF26F1B4C900F7AF63 /* FirstAniViewController.swift */,
+				4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */,
+				4F0F7FB826F5AB7D00FC1E6A /* ThirdAniViewController.swift */,
 				4F61C2D126F1985000F7AF63 /* Main.storyboard */,
 				4F61C2D426F1985300F7AF63 /* Assets.xcassets */,
 				4F61C2D626F1985300F7AF63 /* LaunchScreen.storyboard */,
 				4F61C2D926F1985300F7AF63 /* Info.plist */,
+				4F0F7FBA26F5AE7600FC1E6A /* FloatingView.swift */,
 				4F61C2E126F1DA2800F7AF63 /* PopBallView.swift */,
-				4F61C2E326F20AEA00F7AF63 /* ColorValue.swift */,
-				4F0F7FB426F30B7300FC1E6A /* SecondAniViewController.swift */,
 				4F0F7FB626F318EF00FC1E6A /* PopBallCustomView.swift */,
+				4F61C2E326F20AEA00F7AF63 /* ColorValue.swift */,
 			);
 			path = macaw_framework_junhpark;
 			sourceTree = "<group>";
@@ -220,9 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0F7FB926F5AB7D00FC1E6A /* ThirdAniViewController.swift in Sources */,
 				4F0F7FB526F30B7300FC1E6A /* SecondAniViewController.swift in Sources */,
 				4F61C2E226F1DA2800F7AF63 /* PopBallView.swift in Sources */,
 				4F0F7FB726F318EF00FC1E6A /* PopBallCustomView.swift in Sources */,
+				4F0F7FBB26F5AE7600FC1E6A /* FloatingView.swift in Sources */,
 				4F61C2D026F1985000F7AF63 /* MainViewController.swift in Sources */,
 				4F61C2CC26F1985000F7AF63 /* AppDelegate.swift in Sources */,
 				4F61C2E026F1B4CA00F7AF63 /* FirstAniViewController.swift in Sources */,
