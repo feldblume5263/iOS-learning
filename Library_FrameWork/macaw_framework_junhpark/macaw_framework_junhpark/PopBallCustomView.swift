@@ -18,7 +18,7 @@ class PopBallCustomView: MacawView {
     let n = 5
     let speed = 35.0
     let r = 20.0
-    let time = 3.0
+    let time = 30.0
     
     
     let ballColors = [
@@ -26,6 +26,7 @@ class PopBallCustomView: MacawView {
     ]
     
     required init?(coder aDecoder: NSCoder) {
+        print("1")
         super.init(node: Group(), coder: aDecoder)
     }
     

@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-macaw_framework_junhpark/Pods-macaw_framework_junhpark-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework
 ${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework
+${BUILT_PRODUCTS_DIR}/WaveAnimationView/WaveAnimationView.framework
