@@ -11,63 +11,90 @@ import Macaw
 class FloatingView: MacawView {
     
     var animations = [Animation]()
-    var circlesNodes = [Group]()
     var animation: Animation!
     
     var shapeColor: Int = 0x3EB489
+    var shapeSpeed: Double = 0.3
+    
+    var shapeNodes = [Group]()
+
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(node: circlesNodes.group(), coder: aDecoder)
+        super.init(node: shapeNodes.group(), coder: aDecoder)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    func prepareAnimation(size: Double, range: Double, delay: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
+    func startAnimation(size: Double, range: Double, centerX: CGFloat, centerY: CGFloat) {
         
-        self.createFloatViewConstraints(size: size, range: range, fromCenterX: fromCenterX, fromCenterY: fromCenterY)
+        self.createConstraints(size: size, range: range, fromCenterX: centerX, fromCenterY: centerY)
         
-        makeAnimation(size: size, range: range)
-        self.node = circlesNodes.group()
+        replayAnimation(size: size, range: range)
+    }
     
-        animation = animations.combine().cycle().delay(delay).onComplete {
-            
-            self.replayWithNewAnimation(size: size, range: range)
+    func replayAnimation(size: Double, range: Double) {
+        
+        makeAnimation(size: size, range: range, tag: 1)
+        self.node = shapeNodes.group()
+        animation = animations.combine().onComplete {
+            self.makeAnimation(size: size, range: range, tag: 2)
+            self.node = self.shapeNodes.group()
+            self.animation = self.animations.combine().onComplete {
+                self.makeAnimation(size: size, range: range, tag: 3)
+                self.node = self.shapeNodes.group()
+                self.animation = self.animations.combine().onComplete {
+                    self.makeAnimation(size: size, range: range, tag: 4)
+                    self.node = self.shapeNodes.group()
+                    self.animation = self.animations.combine().onComplete {
+                        
+                        if self.animation.state() == AnimationState.paused {
+                            self.replayAnimation(size: size, range: range)
+                        }
+                    }
+                    self.animation.play()
+                }
+                self.animation.play()
+            }
+            self.animation.play()
         }
+        self.animation.play()
     }
     
-    
-    func replayWithNewAnimation(size: Double, range: Double) {
+    func makeAnimation(size: Double, range: Double, tag: Int) {
         
-        makeAnimation(size: size, range: range)
-        self.node = self.circlesNodes.group()
-
-        self.animation = self.animations.combine()
-    }
-    
-    func makeAnimation(size: Double, range: Double) {
-        
-        animations.removeAll()
-        circlesNodes.removeAll()
+        shapeNodes.removeAll()
         animations.removeAll()
         
         let screenSize: CGRect = self.frame
         let centerX = Double(screenSize.width / 2)
         let centerY = Double(screenSize.height / 2)
         
-        let type = Easing.easeIn
+        let type = Easing.ease
+        let fromShape: Shape
+        let toPlace: Transform
+        if tag == 1 {
+            fromShape = Circle(cx: centerX, cy: centerY - range, r: size).fill(shapeColor)
+            toPlace = fromShape.place.move(dx: 0, dy: range)
+        } else if tag == 2 {
+            fromShape = Circle(cx: centerX, cy: centerY, r: size).fill(shapeColor)
+            toPlace = fromShape.place.move(dx: 0, dy: range)
+        } else if tag == 3 {
+            fromShape = Circle(cx: centerX, cy: centerY + range, r: size).fill(shapeColor)
+            toPlace = fromShape.place.move(dx: 0, dy: range * -1)
+        } else {
+            fromShape = Circle(cx: centerX, cy: centerY, r: size).fill(shapeColor)
+            toPlace = fromShape.place.move(dx: 0, dy: range * -1)
+        }
         
-        let fromCircle = Circle(cx: centerX, cy: centerY - range, r: size).fill(shapeColor)
-        let toPlace = fromCircle.place.move(dx: 0, dy: range * 2)
+        let toAnimation = fromShape.placeVar.animation(to: toPlace, during: shapeSpeed).easing(type)
         
-        let toAnimation = fromCircle.placeVar.animation(to: toPlace).easing(type)
-        
-        animations.append([toAnimation.autoreversed()].sequence())
-        circlesNodes.append(Group(contents: [fromCircle]))
+        animations.append([toAnimation].sequence())
+        shapeNodes.append(Group(contents: [fromShape]))
     }
     
-    func createFloatViewConstraints(size: Double, range: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
+    func createConstraints(size: Double, range: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
         
         self.frame.size = CGSize(width: size * 2 + 10, height: range * 2 + size * 2 )
         self.center.x = superview!.center.x + fromCenterX

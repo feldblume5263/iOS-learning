@@ -10,8 +10,11 @@ import WaveAnimationView
 
 class ThirdAniViewController: UIViewController {
     
+    private var observer: NSObjectProtocol?
+    
     private var floatView1 = FloatingView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-//    private var floatView2 = FloatingView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    private var floatView2 = FloatingView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    private var floatView3 = FloatingView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     private var waveView: WaveAnimationView!
     
@@ -31,21 +34,17 @@ class ThirdAniViewController: UIViewController {
         view.backgroundColor = mainColor
         
         
-        waveView = WaveAnimationView(frame: CGRect(x: view.center.x, y: view.center.y, width: view.frame.width , height: view.frame.height * 0.3), color: .purple)
+        waveView = WaveAnimationView(frame: CGRect(x: 0, y: view.center.y - view.frame.height * 0.2, width: view.frame.width , height: view.frame.height * 0.7), color: .purple)
         
         view.addSubview(waveView)
-        createWaveViewConstraints()
         
         view.addSubview(floatView1)
-//        view.addSubview(floatView2)
-        floatView1.prepareAnimation(size: 30, range: 30, delay: 0, fromCenterX: 0, fromCenterY: 0)
-//        floatView2.prepareAnimation(size: 30, range: 30, delay: 0, fromCenterX: 0, fromCenterY: 0)
-//        floatView2.alpha = 0.0
-        
+        view.addSubview(floatView2)
+        view.addSubview(floatView3)
+                
         view.addSubview(colorButton)
         createColorButtonConstraints()
         colorButton.addTarget(self, action: #selector(colorButtonPressed), for: .touchUpInside)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +53,13 @@ class ThirdAniViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        
-        
-        floatView1.animation.play()
-//        floatView2.animation.play()
-        
+
         waveView.startAnimation()
+        
+        floatView1.startAnimation(size: 30, range: 8, centerX: 0, centerY: 140)
+        floatView2.startAnimation(size: 20, range: 10, centerX: 150, centerY: 128)
+        floatView3.startAnimation(size: 25, range: 6, centerX: -120, centerY: 130)
+        
         
     }
     
@@ -67,13 +67,8 @@ class ThirdAniViewController: UIViewController {
         
         waveView.stopAnimation()
         floatView1.animation.stop()
-//        floatView2.animation.stop()
-    }
-    
-    func createWaveViewConstraints() {
-        
-        waveView.frame.size = CGSize(width: view.frame.width, height: view.frame.height * 0.3)
-        waveView.center = view.center
+        floatView2.animation.stop()
+        floatView3.animation.stop()
     }
     
     func createColorButtonConstraints() {
@@ -84,13 +79,21 @@ class ThirdAniViewController: UIViewController {
     
     @objc func colorButtonPressed() {
         
+        print(floatView1.animation.state())
         if colorIdx % 2 == 0 {
             floatView1.setShapeColore(newColor: 0x7FFFD4)
+            floatView2.setShapeColore(newColor: 0x7FFFD4)
+            floatView3.setShapeColore(newColor: 0x7FFFD4)
         }
         else {
             floatView1.setShapeColore(newColor: 0x3EB489)
+            floatView2.setShapeColore(newColor: 0x3EB489)
+            floatView3.setShapeColore(newColor: 0x3EB489)
         }
         colorIdx = colorIdx + 1
+        if (colorIdx == 10) {
+            colorIdx = 0
+        }
         
     }
 }
