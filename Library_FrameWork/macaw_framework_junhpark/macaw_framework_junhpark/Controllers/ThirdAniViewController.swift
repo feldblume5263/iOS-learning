@@ -33,6 +33,8 @@ class ThirdAniViewController: UIViewController {
         
         view.backgroundColor = mainColor
         
+        let nextButton = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(nextButtonPressed))
+        self.navigationItem.rightBarButtonItem = nextButton
         
         waveView = WaveAnimationView(frame: CGRect(x: 0, y: view.center.y - view.frame.height * 0.2, width: view.frame.width , height: view.frame.height * 0.7), color: .purple)
         
@@ -79,7 +81,6 @@ class ThirdAniViewController: UIViewController {
     
     @objc func colorButtonPressed() {
         
-        print(floatView1.animation.state())
         if colorIdx % 2 == 0 {
             floatView1.setShapeColore(newColor: 0x7FFFD4)
             floatView2.setShapeColore(newColor: 0x7FFFD4)
@@ -95,5 +96,14 @@ class ThirdAniViewController: UIViewController {
             colorIdx = 0
         }
         
+    }
+    
+    @objc func nextButtonPressed() {
+        
+        let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "fourthAniVC")
+        
+        if let fourthAniView = viewControllerName {
+            self.navigationController?.pushViewController(fourthAniView, animated: true)
+        }
     }
 }

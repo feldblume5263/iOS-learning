@@ -62,7 +62,7 @@ class SecondAniViewController: UIViewController {
         super.viewWillAppear(animated)
         
         popBallMiddleView.onComplete = {
-            // 끝나고 할일을 정의!!
+            
             self.minusButton.isEnabled = true
         }
         
@@ -212,5 +212,4 @@ func fadeOut(duration: TimeInterval = 1.0) {
         self.alpha = 0.0
     })
   }
-
 }

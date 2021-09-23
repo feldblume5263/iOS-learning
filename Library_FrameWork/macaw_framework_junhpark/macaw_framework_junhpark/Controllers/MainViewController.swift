@@ -126,10 +126,10 @@ class MainViewController: UIViewController {
     
     @objc func startButtonPressed(sender: UIButton!) {
         
-        let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "firstAniVC")
+        let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "thirdAniVC")
         
-        if let firstAniView = viewControllerName {
-            self.navigationController?.pushViewController(firstAniView, animated: true)
+        if let thirdAniView = viewControllerName {
+            self.navigationController?.pushViewController(thirdAniView, animated: true)
         }
         
     }

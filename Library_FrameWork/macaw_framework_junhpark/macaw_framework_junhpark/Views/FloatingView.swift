@@ -14,7 +14,7 @@ class FloatingView: MacawView {
     var animation: Animation!
     
     var shapeColor: Int = 0x3EB489
-    var shapeSpeed: Double = 0.3
+    var shapeSpeed: Double = 0.25
     
     var shapeNodes = [Group]()
 
