@@ -10,15 +10,14 @@ import Macaw
 
 class SvgTestView: MacawView {
     
-    var animations = [Animation]()
-    var animation: Animation!
+    private var animation: Animation!
+    private var animations = [Animation]()
     
-    var shapeColor: Int = 0x3EB489
-    var shapeSpeed: Double = 0.25
+    private var shape: Shape! // default shpae 이 들어가고 옵셔널 빼기.
+    private var shapeColor: Int = 0xE6bE8A
+    private var shapeSpeed: Double = 0.25
     
-    var shapeNodes = [Group]()
-    
-    var shape: Shape!
+    private var shapeNodes = [Group]()
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,29 +28,30 @@ class SvgTestView: MacawView {
         super.init(frame: frame)
     }
     
-    func setAndPlayAnimation(width: Double, height: Double, range: Double, centerX: CGFloat, centerY: CGFloat) {
+    func setAndPlayAnimation(shapeNode: Node, size: Double, range: Double, centerX: CGFloat, centerY: CGFloat) {
         
-        self.createConstraints(width: width, height: height, range: range, fromCenterX: centerX, fromCenterY: centerY)
-        playOnRepeatAnimation(width: width, range: range)
+        self.setShape(node: shapeNode, size: size, range: range, centerX: centerX, centerY: centerY)
+        
+        playOnRepeatAnimation(range: range)
     }
     
-    func playOnRepeatAnimation(width: Double, range: Double) {
+    func playOnRepeatAnimation(range: Double) {
         
-        makeAnimation(width: width, range: range, tag: 1)
+        makeAnimation(range: range, tag: 1)
         self.node = shapeNodes.group()
         animation = animations.combine().onComplete {
-            self.makeAnimation(width: width, range: range, tag: 2)
+            self.makeAnimation(range: range, tag: 2)
             self.node = self.shapeNodes.group()
             self.animation = self.animations.combine().onComplete {
-                self.makeAnimation(width: width, range: range, tag: 3)
+                self.makeAnimation(range: range, tag: 3)
                 self.node = self.shapeNodes.group()
                 self.animation = self.animations.combine().onComplete {
-                    self.makeAnimation(width: width, range: range, tag: 4)
+                    self.makeAnimation(range: range, tag: 4)
                     self.node = self.shapeNodes.group()
                     self.animation = self.animations.combine().onComplete {
                         
                         if self.animation.state() == AnimationState.paused {
-                            self.playOnRepeatAnimation(width: width, range: range)
+                            self.playOnRepeatAnimation(range: range)
                         }
                     }
                     self.animation.play()
@@ -63,7 +63,15 @@ class SvgTestView: MacawView {
         self.animation.play()
     }
     
-    func makeAnimation(width: Double, range: Double, tag: Int) {
+    func playAnimation() {
+        self.animation.play()
+    }
+    
+    func stopAnimation() {
+        self.animation.stop()
+    }
+    
+    private func makeAnimation(range: Double, tag: Int) {
         
         shapeNodes.removeAll()
         animations.removeAll()
@@ -71,6 +79,8 @@ class SvgTestView: MacawView {
         let type = Easing.ease
         let fromShape: Shape
         let toPlace: Transform
+        
+        shape.fill = Color(shapeColor)
         
         if tag == 1 {
             fromShape = self.shape
@@ -92,31 +102,45 @@ class SvgTestView: MacawView {
         shapeNodes.append(Group(contents: [fromShape]))
     }
     
-    func createConstraints(width: Double, height: Double, range: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
-        
-        self.frame.size = CGSize(width: width, height: range * 2 + height)
-        self.center.x = superview!.center.x + fromCenterX
-        self.center.y = superview!.center.y + fromCenterY
-        self.backgroundColor = .clear
-    }
-    
-    func setShapeColore(newColor: Int) {
+    func setShapeColor(newColor: Int) {
         shapeColor = newColor
     }
     
-    func setSVGtoShape(node: Node) {
-        
+    private func replaceColor(node: Node) {
         if let group = node as? Group {
             for child in group.contents {
-                setSVGtoShape(node: child)
+                replaceColor(node: child)
             }
         } else if let shape = node as? Shape {
-            self.setShape(newShape: shape)
+            shape.fill = Color(shapeColor)
         }
     }
     
-    func setShape(newShape: Shape) {
-        self.shape = newShape
+    func setShape(node: Node, size: Double, range: Double, centerX: CGFloat, centerY: CGFloat) {
+        
+        if let group = node as? Group {
+            for child in group.contents {
+                setShape(node: child, size: size, range: range, centerX: centerX, centerY: centerY)
+            }
+        } else if let shape = node as? Shape {
+            
+            var ratio: Double
+            
+            self.shape = shape
+            ratio = size / self.shape.bounds!.w
+            shape.place = .scale(ratio, ratio)
+            print(size, self.shape.bounds!.w * ratio)
+            print(self.shape.bounds!.w, self.shape.bounds!.h)
+            print(self.shape.bounds!.w * ratio, self.shape.bounds!.h * ratio)
+            setBackgroundView(width: size, height: self.shape.bounds!.h * ratio, range: range, fromCenterX: centerX, fromCenterY: centerY)
+        }
     }
     
+    private func setBackgroundView(width: Double, height: Double, range: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
+        
+        self.frame.size = CGSize(width: width, height: range * 2)
+        self.center.x = superview!.center.x + fromCenterX
+        self.center.y = superview!.center.y + fromCenterY
+        self.backgroundColor = .white
+    }
 }

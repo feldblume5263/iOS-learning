@@ -14,6 +14,7 @@
 		4F0F7FC026F9BD2400FC1E6A /* FourthAniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FBF26F9BD2400FC1E6A /* FourthAniViewController.swift */; };
 		4F0F7FC626F9D28F00FC1E6A /* apple.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4F0F7FC526F9D28F00FC1E6A /* apple.svg */; };
 		4F0F7FCA26FB259500FC1E6A /* SvgTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F7FC926FB259500FC1E6A /* SvgTestView.swift */; };
+		4F0F7FD026FC5D0300FC1E6A /* android.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4F0F7FCF26FC5D0300FC1E6A /* android.svg */; };
 		4F61C2CC26F1985000F7AF63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */; };
 		4F61C2CE26F1985000F7AF63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */; };
 		4F61C2D026F1985000F7AF63 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61C2CF26F1985000F7AF63 /* MainViewController.swift */; };
@@ -36,6 +37,7 @@
 		4F0F7FBF26F9BD2400FC1E6A /* FourthAniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthAniViewController.swift; sourceTree = "<group>"; };
 		4F0F7FC526F9D28F00FC1E6A /* apple.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = apple.svg; path = ../../../../../../Downloads/apple.svg; sourceTree = "<group>"; };
 		4F0F7FC926FB259500FC1E6A /* SvgTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgTestView.swift; sourceTree = "<group>"; };
+		4F0F7FCF26FC5D0300FC1E6A /* android.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = android.svg; path = ../../../../../../Downloads/android.svg; sourceTree = "<group>"; };
 		4F61C2C826F1985000F7AF63 /* macaw_framework_junhpark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macaw_framework_junhpark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F61C2CB26F1985000F7AF63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F61C2CD26F1985000F7AF63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				4F0F7FBA26F5AE7600FC1E6A /* FloatingView.swift */,
 				4F61C2E326F20AEA00F7AF63 /* ColorValue.swift */,
 				4F0F7FC526F9D28F00FC1E6A /* apple.svg */,
+				4F0F7FCF26FC5D0300FC1E6A /* android.svg */,
 				4F0F7FC926FB259500FC1E6A /* SvgTestView.swift */,
 			);
 			path = Views;
@@ -204,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0F7FD026FC5D0300FC1E6A /* android.svg in Resources */,
 				4F61C2D826F1985300F7AF63 /* LaunchScreen.storyboard in Resources */,
 				4F0F7FC626F9D28F00FC1E6A /* apple.svg in Resources */,
 				4F61C2D526F1985300F7AF63 /* Assets.xcassets in Resources */,
