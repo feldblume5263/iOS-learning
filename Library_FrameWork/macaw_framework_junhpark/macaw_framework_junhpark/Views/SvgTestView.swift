@@ -18,6 +18,7 @@ class SvgTestView: MacawView {
     private var shapeSpeed: Double = 0.25
     
     private var shapeNodes = [Group]()
+    private var shapeRange: Double = 1
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,28 +31,28 @@ class SvgTestView: MacawView {
     
     func setAndPlayAnimation(shapeNode: Node, size: Double, range: Double, centerX: CGFloat, centerY: CGFloat) {
         
+        print("setandplay")
         self.setShape(node: shapeNode, size: size, range: range, centerX: centerX, centerY: centerY)
-        
-        playOnRepeatAnimation(range: range)
+        self.playOnRepeatAnimation(range: range)
     }
     
     func playOnRepeatAnimation(range: Double) {
         
-        makeAnimation(range: range, tag: 1)
+        makeAnimation(range: shapeRange, tag: 1)
         self.node = shapeNodes.group()
         animation = animations.combine().onComplete {
-            self.makeAnimation(range: range, tag: 2)
+            self.makeAnimation(range: self.shapeRange, tag: 2)
             self.node = self.shapeNodes.group()
             self.animation = self.animations.combine().onComplete {
-                self.makeAnimation(range: range, tag: 3)
+                self.makeAnimation(range: self.shapeRange, tag: 3)
                 self.node = self.shapeNodes.group()
                 self.animation = self.animations.combine().onComplete {
-                    self.makeAnimation(range: range, tag: 4)
+                    self.makeAnimation(range: self.shapeRange, tag: 4)
                     self.node = self.shapeNodes.group()
                     self.animation = self.animations.combine().onComplete {
-                        
+
                         if self.animation.state() == AnimationState.paused {
-                            self.playOnRepeatAnimation(range: range)
+                            self.playOnRepeatAnimation(range: self.shapeRange)
                         }
                     }
                     self.animation.play()
@@ -106,7 +107,7 @@ class SvgTestView: MacawView {
         shapeColor = newColor
     }
     
-    private func replaceColor(node: Node) {
+    func replaceColor(node: Node) {
         if let group = node as? Group {
             for child in group.contents {
                 replaceColor(node: child)
@@ -127,20 +128,26 @@ class SvgTestView: MacawView {
             var ratio: Double
             
             self.shape = shape
-            ratio = size / self.shape.bounds!.w
-            shape.place = .scale(ratio, ratio)
-            print(size, self.shape.bounds!.w * ratio)
-            print(self.shape.bounds!.w, self.shape.bounds!.h)
-            print(self.shape.bounds!.w * ratio, self.shape.bounds!.h * ratio)
-            setBackgroundView(width: size, height: self.shape.bounds!.h * ratio, range: range, fromCenterX: centerX, fromCenterY: centerY)
+            ratio = size / self.shape.form.bounds().w
+            
+            self.shapeRange = range
+
+            self.shape.place = .scale(ratio, ratio).move(dx: -1 * shape.form.bounds().x, dy: -1 * shape.form.bounds().y)
+
+            setBackgroundView(bounds: shape.form.bounds(),
+                              range: range,
+                              ratio: ratio,
+                              fromCenterX: centerX,
+                              fromCenterY: centerY)
         }
     }
     
-    private func setBackgroundView(width: Double, height: Double, range: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
+    private func setBackgroundView(bounds: Rect, range: Double, ratio: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
         
-        self.frame.size = CGSize(width: width, height: range * 2)
+        print(bounds)
+        self.frame.size = CGSize(width: bounds.w * ratio, height: range * 2 + bounds.h * ratio * 2)
         self.center.x = superview!.center.x + fromCenterX
         self.center.y = superview!.center.y + fromCenterY
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
     }
 }

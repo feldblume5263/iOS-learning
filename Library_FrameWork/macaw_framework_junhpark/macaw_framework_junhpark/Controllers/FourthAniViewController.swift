@@ -10,10 +10,21 @@ import Macaw
 
 class FourthAniViewController: UIViewController {
 
+    
+    private var button: UIButton = {
+    
+        let newButton = UIButton()
+        newButton.frame = CGRect(x: 200, y: 700, width: 100, height: 30)
+        newButton.setTitle("Shape", for: .normal)
+        newButton.addTarget(self, action: #selector(shapeButtonPressed), for: .touchUpInside)
+        newButton.backgroundColor = .blue
+        newButton.setTitleColor(.black, for: .normal)
+        return newButton
+    }()
     private var floatView1 = SvgTestView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     let appleShape = try! SVGParser.parse(resource: "apple")
-    let androidShape = try! SVGParser.parse (resource: "android")
+    let androidShape = try! SVGParser.parse (resource: "android2")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +32,8 @@ class FourthAniViewController: UIViewController {
         view.backgroundColor = mainColor
         view.addSubview(floatView1)
         
-        let androidView = SVGView(node: androidShape, frame: CGRect(x: 100, y: 100, width: 300, height: 300))
-
-        floatView1.setAndPlayAnimation(shapeNode: androidShape, size: 40, range: 50, centerX: 0, centerY: 0)
-        
-        androidView.backgroundColor = .gray
-        view.addSubview(androidView)
-        
+        floatView1.setAndPlayAnimation(shapeNode: appleShape, size: 60, range: 70, centerX: 0, centerY: 0)
+        view.addSubview(button)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +50,9 @@ class FourthAniViewController: UIViewController {
     }
     
     
+    @objc func shapeButtonPressed() {
+        
+        floatView1.setShape(node: androidShape, size: 60, range: 30, centerX: 0, centerY: 0)
+    }
     
-
 }
