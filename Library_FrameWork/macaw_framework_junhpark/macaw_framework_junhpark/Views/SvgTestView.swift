@@ -13,7 +13,7 @@ class SvgTestView: MacawView {
     private var animation: Animation!
     private var animations = [Animation]()
     
-    private var shape: Shape! // default shpae 이 들어가고 옵셔널 빼기.
+    private var shape: Shape!
     private var shapeColor: Int = 0xE6bE8A
     private var shapeSpeed: Double = 0.25
     
@@ -31,7 +31,6 @@ class SvgTestView: MacawView {
     
     func setAndPlayAnimation(shapeNode: Node, size: Double, range: Double, centerX: CGFloat, centerY: CGFloat) {
         
-        print("setandplay")
         self.setShape(node: shapeNode, size: size, range: range, centerX: centerX, centerY: centerY)
         self.playOnRepeatAnimation(range: range)
     }
@@ -130,12 +129,13 @@ class SvgTestView: MacawView {
             self.shape = shape
             ratio = size / self.shape.form.bounds().w
             
-            self.shapeRange = range
+            self.shapeRange = range / ratio
+            print(self.shapeRange)
 
             self.shape.place = .scale(ratio, ratio).move(dx: -1 * shape.form.bounds().x, dy: -1 * shape.form.bounds().y)
 
             setBackgroundView(bounds: shape.form.bounds(),
-                              range: range,
+                              range: shapeRange,
                               ratio: ratio,
                               fromCenterX: centerX,
                               fromCenterY: centerY)
@@ -144,7 +144,6 @@ class SvgTestView: MacawView {
     
     private func setBackgroundView(bounds: Rect, range: Double, ratio: Double, fromCenterX: CGFloat, fromCenterY: CGFloat) {
         
-        print(bounds)
         self.frame.size = CGSize(width: bounds.w * ratio, height: range * 2 + bounds.h * ratio * 2)
         self.center.x = superview!.center.x + fromCenterX
         self.center.y = superview!.center.y + fromCenterY
