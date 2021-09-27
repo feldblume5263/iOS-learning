@@ -149,4 +149,6 @@ class SvgTestView: MacawView {
         self.center.y = superview!.center.y + fromCenterY
         self.backgroundColor = .clear
     }
+    
+    
 }

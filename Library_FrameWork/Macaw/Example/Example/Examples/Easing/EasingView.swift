@@ -8,6 +8,12 @@ class EasingView: MacawView {
     var animation: Animation!
     
     required init?(coder aDecoder: NSCoder) {
+
+        super.init(node: Group(), coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        
         let screenSize: CGRect = UIScreen.main.bounds
         let centerX = Double(screenSize.width / 2)
         
@@ -30,8 +36,13 @@ class EasingView: MacawView {
             animations.append([toAnimation.autoreversed()].sequence())
             circlesNodes.append(Group(contents: [titleText, fromCircle, toCircle]))
         }
-        
         animation = animations.combine().cycle()
-        super.init(node: circlesNodes.group(), coder: aDecoder)
+        super.init(frame: frame)
+        self.node = circlesNodes.group()
+    }
+    
+    func prepareAnimation() {
+        
+
     }
 }

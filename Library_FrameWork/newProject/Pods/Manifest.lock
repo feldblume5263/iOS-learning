@@ -1,0 +1,24 @@
+PODS:
+  - Macaw (0.9.7):
+    - SWXMLHash
+  - SWXMLHash (5.0.1)
+  - WaveAnimationView (1.0.2)
+
+DEPENDENCIES:
+  - Macaw (= 0.9.7)
+  - WaveAnimationView
+
+SPEC REPOS:
+  trunk:
+    - Macaw
+    - SWXMLHash
+    - WaveAnimationView
+
+SPEC CHECKSUMS:
+  Macaw: 4a931baf9a9826b06d0d8ecf300014c962ab9d50
+  SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
+  WaveAnimationView: 1ffdf3184884eb3270f4b19cc2e69893fec16b9d
+
+PODFILE CHECKSUM: b7a434f8f369b27e0878fffd175a5dc61e390e67
+
+COCOAPODS: 1.10.1
